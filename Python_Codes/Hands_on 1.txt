@@ -1,0 +1,14 @@
+import re
+
+# Given text
+text = "Dog, Fox, Horse, Lion, Tiger, Zebra, Cat"
+
+# Task 1: Extract specified animals using | metacharacter
+task1_pattern = r'Dog|Cat|Zebra|Horse'
+task1_matches = re.findall(task1_pattern, text)
+print("Task 1 Matches:", task1_matches)
+
+# Task 2: Extract names that begin with a capital letter
+task2_pattern = r'\b[A-Z][a-z]*\b'
+task2_matches = re.findall(task2_pattern, text)
+print("Task 2 Matches:", task2_matches)
