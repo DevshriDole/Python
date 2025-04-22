@@ -1,0 +1,203 @@
+                                                    ASSIGNMENT_Python NO 1
+1)
+a,b = "xyz","abc"
+print("a = ",a)
+print("b = ",b)
+print("...After swapping...")
+b,a = a,b
+print("a = ",a)
+print("b = ",b)
+
+output->
+a =  xyz
+b =  abc
+...After swapping...
+a =  abc
+b =  xyz
+#########################################################
+2)
+a = 12
+b = 2
+print("---------------")
+
+sum = a + b
+print("\nSum of two numbers is: ", sum)
+
+sub = a - b
+print("\nSubtraction of two numbers is: ", sub)
+
+mul = a * b
+print("\nMultiplication of two numbers is:", mul)
+
+div = a / b
+print("\nDivision of two numbers is: ", div)
+
+mod = a % b
+print("\nModulus of two numbers is: ", mod)
+
+floor_div = a // b
+print("\nFloor division of two numbers is: ", floor_div)
+
+
+
+output-> Sum of two numbers is:  14
+
+Subtraction of two numbers is:  10
+
+Multiplication of two numbers is: 24
+
+Division of two numbers is:  6.0
+
+Modulus of two numbers is:  0
+
+Floor division of two numbers is:  6
+
+#####################################################################
+
+3)
+i = 5
+j = 10
+print("---------------")
+
+print("\n i is equal to j:", i == j)
+
+print("\n i is not equal to j:", i != j)
+
+print("\n i is greater than j:", i > j)
+
+print("\n i is greater than or equal to j:", i >= j)
+
+print("\n i is less than j:", i < j)
+
+print("\n i is less than or equal to j:", i <= j)
+print("---------------")
+
+output->i is equal to j: False
+
+ i is not equal to j: True
+
+ i is greater than j: False
+
+ i is greater than or equal to j: False
+
+ i is less than j: True
+
+ i is less than or equal to j: True
+
+##################################################################
+
+4) 
+x = 10
+y = 5
+print("----------")
+operator = input("\nEnter any operator:")
+
+if operator == '+':
+    result = x + y
+    print("\nResult=", result)
+elif operator == '-':
+    result = x - y
+    print("\nResult=", result)
+elif operator == '*':
+    result = x * y
+    print("\nResult=", result)
+elif operator == '/':
+    result = x / y
+    print("\nResult=", result)
+else:
+    print("\nInvalid operator...")
+
+output->Enter any operator:+
+
+Result= 15
+
+Enter any operator:=
+
+Invalid operator...
+
+#################################################################
+
+5) 
+num1 = int(input("\nEnter first number:"))
+num2 = int(input("\nEnter second number:"))
+
+addition = num1 + num2
+
+print("\nAddition of two numbers is=", addition)
+
+output->Enter first number:18
+
+Enter second number:90
+
+Addition of two numbers is= 108 
+
+###################################################################
+
+6)
+i = 5
+f = 7.5
+
+result = i + f
+print("\nResult= ", result)
+print("\nType of result is:", type(result))
+
+output->Result=  12.5
+
+Type of result is: <class 'float'> 
+
+###################################################################
+
+7) 
+num = float(input("Enter a number:"))
+
+# square = num * num
+
+square = num ** 2
+print("\nSquare of a number is:", square)
+
+output->Enter a number:40
+
+Square of a number is: 1600.0
+
+##################################################################
+8)
+s = "21"
+n = 12
+
+result = s + str(n)
+print("\nResult is: ", result)
+print("\nType of result is: ", type(result))
+
+output->Result is:  2112
+
+Type of result is:  <class 'str'>
+
+##################################################################
+9)
+age = int(input("Enter your age:"))
+
+if age < 5:
+    price = 0
+    print("\nTicket is free...")
+else:
+    if age <= 12:
+        price = 5
+        print("\nYour ticket price is Rs",price)
+    else:
+        if age <= 60:
+            
+            price = 10
+            print("\nYour ticket price is Rs",price)
+        else:
+            price = 7
+            print("\nYour ticket price is Rs",price)
+
+output->Enter your age:24
+
+Your ticket price is Rs 10
+
+Enter your age:5
+
+Your ticket price is Rs 5
+
+###################################################################

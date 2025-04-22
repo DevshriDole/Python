@@ -1,0 +1,313 @@
+ASSIGNMENT NO 4
+
+1)
+
+call_count = 0
+
+def count_function_calls(reset=False):
+    global call_count
+    if reset:
+        call_count = 0
+        print("Counter reset.")
+    else:
+        call_count += 1
+        print(f"Function has been called {call_count} times.") 
+
+count_function_calls()
+
+count_function_calls()
+
+count_function_calls(True)
+
+count_function_calls()
+
+OUTPUT -> 
+
+Function has been called 1 times.
+Function has been called 2 times.  
+Counter reset.
+Function has been called 1 times.
+
+##########################################################
+
+2)
+i)
+import re
+text = "banana is my favorite fruit."
+pattern = r'banana'
+
+print(text)
+print(pattern)
+print("\n***With search()***")
+match = re.search(pattern, text)
+if match:
+    print(f"\nMatch found with search(): '{match.group()}'")
+else:
+    print("\nMatch not found...")
+print("\n---------------")
+
+
+print("\n***With match()***")
+match = re.match(pattern, text)
+if match:
+     print(f"\nMatch found at the beginning with match(): '{match.group()}'")
+else:
+     print("\nMatch not found...")
+print("\n---------------")
+
+OUTPUT->
+
+banana is my favorite fruit.
+banana
+
+***With search()***
+
+Match found with search(): 'banana'
+
+---------------
+
+***With match()***
+
+Match found at the beginning with match(): 'banana'
+
+---------------
+
+ii)
+text = "I have an apple,but i want orange"
+pattern = r'orange'
+
+print(text)
+print(pattern)
+print("\n***With search()***")
+match = re.search(pattern, text)
+if match:
+    print(f"Match found with search(): '{match.group()}'")
+else:
+    print("Match not found...")
+print("\n---------------")
+
+
+print("\n***With match()***")
+match = re.match(pattern, text)
+if match:
+     print(f"Match found at the beginning with match(): '{match.group()}'")
+else:
+     print("Match not found...")
+print("\n---------------")
+
+OUTPUT ->
+
+I have an apple,but i want orange
+orange
+
+***With search()***
+Match found with search(): 'orange'
+
+---------------
+
+***With match()***
+Match not found...
+
+---------------
+
+iii)
+text = "The quick brown fox."
+pattern = r'The'
+
+print(text)
+print(pattern)
+print("\n***With search()***")
+match = re.search(pattern, text)
+if match:
+    print(f"Match found with search(): '{match.group()}'")
+else:
+    print("Match not found...")
+print("---------------")
+
+
+print("\n***With match()***")
+match = re.match(pattern, text)
+if match:
+     print(f"Match found at the beginning with match(): '{match.group()}'")
+else:
+     print("Match not found...")
+print("---------------")
+
+OUTPUT ->
+
+The quick brown fox.
+The
+
+***With search()***
+Match found with search(): 'The'
+---------------
+
+***With match()***
+Match found at the beginning with match(): 'The'
+
+iv)
+text = "The quick brown fox."
+pattern = r'quick'
+
+print(text)
+print(pattern)
+print("\n***With search()***")
+match = re.search(pattern, text)
+if match:
+    print(f"Match found with search(): '{match.group()}'")
+else:
+    print("Match not found...")
+print("---------------")
+
+
+print("\n***With match()***")
+match = re.match(pattern, text)
+if match:
+     print(f"Match found at the beginning with match(): '{match.group()}'")
+else:
+     print("Match not found...")
+print("---------------")
+
+OUTPUT->
+
+The quick brown fox.
+quick
+
+***With search()***
+Match found with search(): 'quick'
+---------------
+
+***With match()***
+Match not found...
+---------------
+
+#################################################################
+3)
+i)
+import re
+
+
+print("\n***With sub()***")
+text = "Remove the word the from the sentence"
+pattern = r'the'
+replacement = ''
+
+replaced_text = re.sub(pattern, replacement, text)
+print(f"Replaced text with sub(): '{replaced_text}'")
+print("\n---------------")
+
+OUTPUT->
+
+***With sub()***
+Replaced text with sub(): 'Remove  word  from  sentence'
+
+---------------
+
+ii)
+text = "The quick brown fox jumps over the lazy dog."
+pattern = r'lazy'
+replacement ="energetic"
+
+replaced_text = re.sub(pattern, replacement, text)
+print(f"Replaced text with sub(): '{replaced_text}'")
+print("\n---------------")
+
+OUTPUT->
+
+Replaced text with sub(): 'The quick brown fox jumps over the energetic dog.'
+
+iii)
+text = "Change all instances of cat to dog.."
+pattern = r'cat'
+replacement ="dog"
+
+replaced_text = re.sub(pattern, replacement, text)
+print(f"Replaced text with sub(): '{replaced_text}'")
+print("\n---------------")
+
+OUTPUT ->
+
+Replaced text with sub(): 'Change all instances of dog to dog..
+
+###################################################################
+4)
+i)
+text = "apple banana apple banana"
+pattern = r'banana'
+
+matches = re.findall(pattern, text)
+print(f"\nMatches found with findall(): {matches}")
+print("\n---------------")
+
+OUTPUT->
+Matches found with findall(): ['banana', 'banana']
+
+---------------
+ii)
+
+text = "The dog says woof.The cat says meow.The bird says tweet."
+pattern = r'The'
+
+matches = re.findall(pattern, text)
+print(f"\nMatches found with findall(): {matches}")
+print("\n---------------")
+
+OUTPUT->
+
+Matches found with findall(): ['The', 'The', 'The']
+
+---------------
+
+iii)
+
+text = "123 abc 123 def 123"
+pattern = r'123'
+
+matches = re.findall(pattern, text)
+print(f"\nMatches found with findall(): {matches}")
+print("\n---------------")
+
+OUTPUT->
+Matches found with findall(): ['123', '123', '123']
+
+---------------
+
+iv)
+text = "hello hello hello hello"
+pattern = r'hello'
+
+matches = re.findall(pattern, text)
+print(f"\nMatches found with findall(): {matches}")
+print("\n---------------")
+
+OUTPUT->
+Matches found with findall(): ['hello', 'hello', 'hello', 'hello']
+
+---------------
+
+##################################################################
+5)
+import re
+
+def find_urls(text):
+    url_pattern = r'https?://[^\s,"]+'
+    urls = re.findall(url_pattern,text)
+    return urls
+
+sample_text = """
+Check out our website at https://www.example.com or our blog at http://blog.example.com/posts/123.
+Also visit https://another-site.org/about-us for more info.
+"""
+
+urls = find_urls(sample_text)
+print("Found URLS:")
+for url in urls:
+    print(url)
+
+OUTPUT->
+Found URLS:
+https://www.example.com
+http://blog.example.com/posts/123. 
+https://another-site.org/about-us  
+
+#######################################################################

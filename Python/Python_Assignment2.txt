@@ -1,0 +1,486 @@
+                     PYTHON_ASSIGNMENT NO - 2
+
+1) 
+a = 1
+b = 2
+fibonacci_series = []
+
+while b <= 100:
+    if b >= 2:
+        fibonacci_series.append(b)
+    a , b = b, a + b
+print("\n Fibonacci series from 2 to 100 is: ")
+print(fibonacci_series)
+
+output->
+ Fibonacci series from 2 to 100 is: 
+[2, 3, 5, 8, 13, 21, 34, 55, 89]
+
+#################################################################
+
+2)
+n = int(input("\nEnter a number:"))
+factorial = 1
+
+# for i in range(1, n + 1):
+#     factorial *= i
+# print("\nFactorial of a number is:", factorial)
+
+
+
+i = 1
+while i <= n:
+    factorial *= i
+    i += 1
+print("\nFactorial of a number is:", factorial)
+
+output->Enter a number:13
+
+Factorial of a number is: 6227020800
+
+##################################################################
+
+3) 
+num = int(input("\nEnter a number:"))
+
+sum = 0
+
+while num > 0:
+    digit = num % 10
+    sum += digit
+    num = num // 10
+print("\nSum of digits of a number is:", sum)
+
+output->Enter a number:45
+
+Sum of digits of a number is: 9
+
+###################################################################
+
+4)
+n = int(input("\nEnter a number:"))
+print("\n...Multiplication table...")
+
+for i in range(1,11):
+    print(n * i)
+
+output->Enter a number:25
+
+...Multiplication table...
+25
+50
+75
+100
+125
+150
+175
+200
+225
+250
+
+####################################################################
+
+5)
+def convert_inches(value, target_unit):
+    if target_unit.lower() == "feet":
+        return value / 12
+    elif target_unit.lower() == "meters":
+        return value * 0.0254
+    elif target_unit.lower() == "centimeters":
+        return value * 2.54
+    else:
+        return None
+
+while True:
+    try:
+        # Input value and unit
+        input_value = float(input("Enter the value in inches: "))
+        input_unit = input("Enter the unit of the input value (should be 'inches'): ").lower()
+
+        # Only allow inches as input
+        if input_unit != "inches":
+            print("Sorry, this program only accepts inches as the input unit.")
+            continue
+
+        # Target unit selection
+        target_unit = input("Enter the target unit (feet, meters, centimeters): ").lower()
+
+        # Conversion
+        result = convert_inches(input_value, target_unit)
+        if result is not None:
+            print(f"{input_value} inches is equal to {result:.2f} {target_unit}.")
+        else:
+            print("Invalid target unit entered.")
+
+        # Repeat?
+        repeat = input("Do you want to convert another value? (Yes/No): ").strip().lower()
+        if repeat != 'yes':
+            print("Exiting the converter. Goodbye!")
+            break
+    except ValueError:
+        print("Invalid input. Please enter a numeric value for the measurement.")
+
+output->
+Enter the value in inches: 36
+Enter the unit of the input value (should be 'inches'): inches
+Enter the target unit (feet, meters, centimeters): feet
+36.0 inches is equal to 3.00 feet.
+Do you want to convert another value? (Yes/No): yes
+Enter the value in inches: 38.40
+Enter the unit of the input value (should be 'inches'): inches
+Enter the target unit (feet, meters, centimeters): meters
+38.4 inches is equal to 0.98 meters.
+Do you want to convert another value? (Yes/No): yes
+Enter the value in inches: 89.23
+Enter the unit of the input value (should be 'inches'): inches
+Enter the target unit (feet, meters, centimeters): centimeters
+89.23 inches is equal to 226.64 centimeters.    
+Do you want to convert another value? (Yes/No): no
+Exiting the converter. Goodbye!
+
+##########################################################################################
+
+6)
+def is_prime(num):
+    if num <= 1:
+        return False
+    for i in range(2,int(num**0.5)+1):
+         if num % i == 0:
+            return False
+    return True 
+try:
+   n = int(input("Enter a positive integer:")) 
+   if n <= 0:
+      print("Please enter a positive integer greater then zero.")   
+   else:
+      prime_list = []
+      for number in range(2,n+1):
+         if is_prime(number):
+            prime_list.append(number)
+         print(f"prime numbers upto to {n}: {prime_list}")
+except ValueError:
+   print("Invalid input .Please enter a valid integer.")
+
+output->    Enter a positive integer:20
+prime numbers upto to 20: [2]
+prime numbers upto to 20: [2, 3]
+prime numbers upto to 20: [2, 3]
+prime numbers upto to 20: [2, 3, 5]
+prime numbers upto to 20: [2, 3, 5]
+prime numbers upto to 20: [2, 3, 5, 7]
+prime numbers upto to 20: [2, 3, 5, 7]
+prime numbers upto to 20: [2, 3, 5, 7]
+prime numbers upto to 20: [2, 3, 5, 7]
+prime numbers upto to 20: [2, 3, 5, 7, 11]        
+prime numbers upto to 20: [2, 3, 5, 7, 11]        
+prime numbers upto to 20: [2, 3, 5, 7, 11, 13]    
+prime numbers upto to 20: [2, 3, 5, 7, 11, 13]    
+prime numbers upto to 20: [2, 3, 5, 7, 11, 13]    
+prime numbers upto to 20: [2, 3, 5, 7, 11, 13]    
+prime numbers upto to 20: [2, 3, 5, 7, 11, 13, 17]
+prime numbers upto to 20: [2, 3, 5, 7, 11, 13, 17]
+prime numbers upto to 20: [2, 3, 5, 7, 11, 13, 17, 19]
+prime numbers upto to 20: [2, 3, 5, 7, 11, 13, 17, 19]
+
+
+###############################################################################     
+
+7)
+
+todo_list = []
+while True:
+    print("/n TO-DO list menu") 
+    print("1.add task")
+    print("2.remove task")
+    print("3.view task")
+    print("4.exit")
+    choice = input("enter the choice : ")
+    if choice == "1":
+        task = input("enter the task : ")
+        todo_list.append(task)
+        print("task added")
+    elif choice == "2":
+        task = input("enter the task to remove")
+        if task in todo_list:
+            todo_list.remove(task)
+            print("task removed")
+        else:
+            print("task not found")        
+    elif choice == "3" :
+        print ("task list") 
+        for i in range(len(todo_list)):
+                print(f"{i+1}.{todo_list[i]}")
+    elif choice == "4":
+        print("exit")
+        break
+    else:
+        print("invalid choice")    
+
+output->
+     
+/n TO-DO list menu
+1.add task
+2.remove task      
+3.view task        
+4.exit
+enter the choice : 1
+enter the task : wake up
+task added
+/n TO-DO list menu 
+enter the task : wake up
+task added
+/n TO-DO list menu
+task added
+/n TO-DO list menu
+/n TO-DO list menu
+1.add task
+2.remove task
+3.view task
+4.exit
+enter the choice : 3
+2.remove task
+3.view task
+4.exit
+enter the choice : 3
+task list
+1.wake up
+/n TO-DO list menu
+4.exit
+enter the choice : 3
+task list
+1.wake up
+/n TO-DO list menu
+task list
+1.wake up
+/n TO-DO list menu
+/n TO-DO list menu
+1.add task
+2.remove task
+2.remove task
+3.view task
+4.exit
+enter the choice : 4
+exit
+
+#############################################################################
+
+8)
+cubes = {}
+
+for i in range(1,6):
+    cubes[i] = i ** 3
+
+print("Dictionary of cubes from 1 to 5 : ") 
+print(cubes)   
+
+output->
+Dictionary of cubes from 1 to 5 : 
+{1: 1, 2: 8, 3: 27, 4: 64, 5: 125} 
+
+###############################################################################
+
+9)
+ascii_dict = {}
+
+for char in range(ord('a'), ord('f')):
+    ascii_dict[chr(char)] = char
+
+print("\nDictionary of letters and their ASCII values: ")
+print(ascii_dict)
+    
+
+Output->
+Dictionary of letters and their ASCII values: 
+{'a': 97, 'b': 98, 'c': 99, 'd': 100, 'e': 101}
+
+##############################################################################
+
+10)
+inventory = {}
+def add_item():
+    item = input("\nEnter item name:")
+    if item in inventory:
+        print("Item already exists. Use update options to modify.")
+        return
+    quantity = int(input("\nEnter quantity:"))
+    price = float(input("\nEnter price per item:"))
+    inventory [ item] = {"quantity": quantity, "price": price}
+    print(f"{item} added successfully.")
+
+def update_item():
+    item = input("\nEnter item name to update:")
+    # if item not in inventory:
+        # print("\nItem not found in inventory.")
+        # return
+    choice = input("\nWhat would you like to update? Quantity/Price/Both: ").lower() 
+    if choice == "quantity":
+        quantity = int(input("\nEnter new quantity: "))
+        inventory[item]["quantity"] = quantity
+    elif choice == "price":
+        price = float(input("\nEnter new price: ")) 
+        inventory[item]["price"] = price
+    elif choice == "both":
+        quantity =int(input("\nEnter new quantity: "))
+        price = float(input("\nEnter new price: "))
+        inventory[item]["quantity"] = quantity
+        inventory[item]["price"] = price
+    else:
+        print("\nInvalid option.")
+        return
+    print(f"{item} updated successfully.") 
+
+def display_inventory():
+    if not inventory:
+        print("\nInventory is empty.")
+        return
+    print("\nCurrent inventory")
+    print("{:<15} {:<10} {:<10}".format("Item", "Quantity", "Price"))
+    for item, details in inventory.items():
+        print("{:<15} {:<10} {:<10.2f}".format(item, details["quantity"], details["price"]))
+
+def calculate_total_value():
+    total = 0
+    for details in inventory.values():
+        total += details["quantity"] * details["price"] 
+    print(f"\nTotal inventory value: Rs. {total:.2f}")
+
+def menu():
+    while True:
+        print("\nInventory management menu: ")
+        print("\n1.Add item")
+        print("\n2.Update item")
+        print("\n3.Display inventory")  
+        print("\n4.Calculate total number ")
+        print("\n5.Exit") 
+        choice = input("\nEnter your choice (1-5): ") 
+        if choice == "1":
+            add_item()
+        elif choice == "2":
+            update_item()
+        elif choice == "3":
+            display_inventory()
+        elif choice == "4":
+            calculate_total_value()
+        elif choice == "5":
+            print("\nExisting inventory management system.")
+            break
+        else:
+            print("\nInvalid choice. Please enter a number between 1 and 5.")
+
+menu()
+
+
+Output->
+Inventory management menu:
+
+1.Add item
+
+2.Update item
+
+3.Display inventory
+
+4.Calculate total number
+
+5.Exit
+
+Enter your choice (1-5): 1
+
+Enter item name: Pen
+
+Enter quantity: 5
+
+Enter price per item: 10
+ Pen added successfully.   
+
+Inventory management menu: 
+
+1.Add item
+
+2.Update item
+
+3.Display inventory
+
+4.Calculate total number
+
+5.Exit
+
+Enter your choice (1-5): 3
+
+Current inventory
+Item            Quantity   Price
+ Pen            5          10.00
+
+Inventory management menu:
+
+1.Add item
+
+2.Update item
+
+3.Display inventory
+
+4.Calculate total number
+
+5.Exit
+
+Enter your choice (1-5): 2
+
+Enter item name to update: Pen
+
+What would you like to update? Quantity/Price/Both: Quantity
+
+Enter new quantity: 10
+ Pen updated successfully.
+
+Inventory management menu:
+
+1.Add item
+
+2.Update item
+
+3.Display inventory
+
+4.Calculate total number
+
+5.Exit
+
+Enter your choice (1-5): 3
+
+Current inventory
+Item            Quantity   Price
+ Pen            10         10.00
+
+Inventory management menu:
+
+1.Add item
+
+2.Update item
+
+3.Display inventory
+
+4.Calculate total number
+
+5.Exit
+
+Enter your choice (1-5): 4
+
+
+Total inventory value: Rs. 100.00
+
+
+Inventory management menu:
+
+1.Add item
+
+
+2.Update item
+
+
+3.Display inventory
+
+4.Calculate total number
+
+5.Exit
+
+Enter your choice (1-5): 5
+
+Existing inventory management system.

@@ -1,0 +1,285 @@
+Assignment- 3
+
+
+1)
+
+my_tuple = input("\nEnter the values in tuple seperated by commas: ")
+int_tuple = tuple(int(x.strip()) for x in my_tuple.split(','))
+
+total = sum(int_tuple)
+average = total / len(int_tuple)
+maximum = max(int_tuple)
+minimum = min(int_tuple)
+count = len(int_tuple)
+
+print("\nTuple is: ", int_tuple)
+print("\nSum of all elements in a tuple is: ", total)
+print("\nAverage of the elements is: ", average)
+print("\nMaximum value in tuple is: ", maximum)
+print(f"\nMinimum value in a tuple is: {minimum}")
+print(f"\nNumber of elements in a tuple is: {count}")
+
+
+Output->
+Enter the values in tuple seperated by commas: 2, 4, 6, 8, 10, 15
+
+Tuple is:  (2, 4, 6, 8, 10, 15)       
+
+Sum of all elements in a tuple is:  45
+
+Average of the elements is:  7.5      
+
+Maximum value in tuple is:  15        
+
+Minimum value in a tuple is: 2        
+
+Number of elements in a tuple is: 6  
+
+################################################################
+
+2)
+my_tuple = input("\nEnter the values in tuple seperated by commas: ")
+
+tuple_sort = tuple(int(x.strip()) for x in my_tuple.split(','))
+print("\nOriginal tuple is: ", tuple_sort)
+
+asce_tuple = tuple(sorted(tuple_sort))
+
+threshold = int(input("Enter a value to filter elements greater than it:"))
+filter_element = tuple(x for x in asce_tuple if x > threshold)
+
+print("\nTuple in ascending order is: ", asce_tuple)
+print("\nFiltered elements are: ", filter_element)
+
+
+Output->
+Enter the values in tuple seperated by commas: 1, 3, 2, 4, 9, 5, 7
+
+Original tuple is:  (1, 3, 2, 4, 9, 5, 7)        
+Enter a value to filter elements greater than it:4
+
+Tuple in ascending order is:  (1, 2, 3, 4, 5, 7, 9)
+
+Filtered elements are:  (5, 7, 9)
+
+########################################################
+
+3)
+my_tuple = input("\nEnter elements in a tuple seperated by commas: ")
+int_tuple = tuple(int(x.strip()) for x in my_tuple.split(','))
+
+first_element = int_tuple[0]
+last_element = int_tuple[-1]
+slice_tuple = int_tuple[1:-1]
+every_second = int_tuple[::2]
+reversed_tuple = int_tuple[::-1]
+
+
+print("\nOriginal tuple is: ", int_tuple)
+print("\nFirst element of the tuple is: ", first_element)
+print("\nLast element of the tuple is: ", last_element)
+print("\nTuple after excluding first and last element is: ", slice_tuple)
+print("\nEvery second elemnt of a tuple is: ", every_second)
+print("\nReversed tuple is: ", reversed_tuple)
+
+
+Output->
+Enter elements in a tuple seperated by commas: 5, 10, 15, 20, 25, 30
+
+Original tuple is:  (5, 10, 15, 20, 25, 30)
+
+First element of the tuple is:  5
+
+Last element of the tuple is:  30
+
+Tuple after excluding first and last element is:  (10, 15, 20, 25)
+
+Every second elemnt of a tuple is:  (5, 15, 25)
+
+Reversed tuple is:  (30, 25, 20, 15, 10, 5)
+
+################################################################
+
+4)
+def pack_unpack_tuple():
+    name = input("Enter name:")
+    age = int(input("\nEnter age:"))
+    city = input("\nEnter city:")
+    country = input("\nEnter country:")
+
+    person_info = (name, age, (city, country))
+    print("\nInformation of the person is: ", person_info)
+    name, age, (city, country) = person_info
+    print("\nName of the person is: ", name)
+    print("\nAge of the person is: ", age)
+    print("\nCity is: ", city)
+    print("\nCountry is: ", country)
+
+pack_unpack_tuple()
+
+Output->
+Enter name:Dipika
+
+Enter age:25
+
+Enter city:Pune
+
+Enter country:India
+
+Information of the person is:  ('Dipika', 25, ('Pune', 'India'))
+
+Name of the person is:  Dipika
+
+Age of the person is:  25
+
+City is:  Pune
+
+Country is:  India
+
+#########################################################
+
+5)
+str = input("\nEnter elements of a tuple seperated by commas:")
+elements = tuple(eval(x.strip()) for x in str.split(','))
+
+element_to_repeat = eval(input("\nEnter the element you want to repeat:"))
+repeat_count = int(input("\nEnter how many times to repeated:"))
+
+new_tuple = tuple()
+for item in elements:
+    if item == element_to_repeat:
+        new_tuple += (item, ) * repeat_count
+    else:
+        new_tuple += (item, )
+
+print("\nOriginal tuple: ", elements)
+print("\nNew tuple: ", new_tuple) 
+
+Output->
+Enter elements of a tuple seperated by commas:1, 'ram', 3.75, 'Hello'  
+
+Enter the element you want to repeat:'Hello'
+
+Enter how many times to repeated:3
+
+Original tuple:  (1, 'ram', 3.75, 'Hello')
+
+New tuple:  (1, 'ram', 3.75, 'Hello', 'Hello', 'Hello')
+
+###########################################################
+
+6)
+str = input("Enter a string:")
+print(str)
+
+processed_str = str.replace(" ","").lower()
+if processed_str == processed_str[::-1]:
+    print("\nThe string is a palindrome.")
+else:
+    print("\nString is not a palindrome.")
+
+Output->
+Enter a string:hello
+hello
+
+String is not a palindrome.  
+
+Enter a string:race car
+race car
+
+The string is a palindrome.  
+
+##########################################################
+
+7)
+str1 = input("Enter the first string:")
+str2 = input("Enter second string:")
+
+str1_processed = str1.replace(" ","").lower()
+str2_processed = str2.replace(" ","").lower()
+
+if sorted(str1_processed) == sorted(str2_processed):
+    print("\nThe strings are anagrams.")
+else:
+    print("\nThe strings are not anagrams.")
+
+
+Output->
+Enter the first string:abc
+Enter second string:bcd
+
+The strings are not anagrams.
+
+Enter the first string:listen
+Enter second string:silent
+
+The strings are anagrams.
+
+########################################################
+
+8)
+input_str = input("Enter a string:")
+processed_str = input_str.replace(" ","").lower()
+
+char_frequency = {}
+for char in processed_str:
+    if char in char_frequency:
+        char_frequency[char] += 1
+    else:
+        char_frequency[char] = 1
+print("\nCharacter frequencies: ")
+for char, freq in char_frequency.items():
+    print(f" '{char}':{freq}")
+
+
+Output->
+Enter a string: good morning
+
+Character frequencies: 
+ 'g':2
+ 'o':3
+ 'd':1
+ 'm':1
+ 'r':1
+ 'n':2
+ 'i':1
+
+#############################################################
+
+9)
+def extract_unique_words(paragraph):
+    words = paragraph.split()
+    cleaned_words = [word.strip('.,!?;:"\'').lower() for word in words]
+    unique_words = set(cleaned_words)
+    sorted_words = sorted(unique_words)
+    print("\nUnique words in alphabetical order: ")
+
+    for word in sorted_words:
+        print(word)
+
+paragraph = """ Python is a powerful. Python is easy to learn.
+It is used in web development, data analysis, AI and more."""
+
+extract_unique_words(paragraph)
+
+
+Output->
+Unique words in alphabetical order:
+a
+ai
+analysis
+and
+data
+development
+easy
+in
+is
+it
+learn
+more
+powerful
+python
+to
+used
+web
+################################################################
