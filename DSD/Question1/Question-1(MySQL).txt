@@ -1,0 +1,158 @@
+mysql> create database company_db;
+Query OK, 1 row affected (0.10 sec)
+
+mysql> use company_db;
+Database changed
+mysql> show tables;
+Empty set (0.02 sec)
+
+mysql> create table location
+    -> (locid int primary key,
+    -> lname varchar(10),
+    -> address varchar(20)
+    -> );
+Query OK, 0 rows affected (0.28 sec)
+
+mysql> create table admin
+    -> (adminid int primary key,
+    -> uname varchar(10),
+    -> password varchar(10),
+    -> mobile int,
+    -> name varchar(15)
+    -> );
+Query OK, 0 rows affected (0.27 sec)
+
+mysql> create table Server
+    -> (sid int,
+    -> sname varchar(10) not null,
+    -> configuration varchar(60),
+    -> locid int,
+    -> adminid int,
+    -> foreign key(locid) references location(locid),
+    -> foreign key(adminid) references admin(adminid)
+    -> );
+Query OK, 0 rows affected (0.46 sec)
+
+
+mysql> show tables;
++----------------------+
+| Tables_in_company_db |
++----------------------+
+| admin                |
+| location             |
+| server               |
++----------------------+
+3 rows in set (0.00 sec)
+
+mysql> desc Server;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| sid           | int         | YES  |     | NULL    |       |
+| sname         | varchar(10) | NO   |     | NULL    |       |
+| configuration | varchar(60) | YES  |     | NULL    |       |
+| locid         | int         | YES  | MUL | NULL    |       |
+| adminid       | int         | YES  | MUL | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+
+mysql> desc admin;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| adminid  | int         | NO   | PRI | NULL    |       |
+| uname    | varchar(10) | YES  |     | NULL    |       |
+| password | varchar(10) | YES  |     | NULL    |       |
+| mobile   | int         | YES  |     | NULL    |       |
+| name     | varchar(15) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> desc location;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| locid   | int         | NO   | PRI | NULL    |       |
+| lname   | varchar(10) | YES  |     | NULL    |       |
+| address | varchar(20) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+
+mysql> insert into location values
+    -> (101, 'lab B', 'Acts Pune'),
+    -> (102, 'lab C', 'Acts Pune'),
+    -> (103, 'lab D', 'IACSD Pune');
+Query OK, 3 rows affected (0.04 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> insert into location values
+    -> (104, 'lab E', 'SunBeam Pune');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select * from location;
++-------+-------+--------------+
+| locid | lname | address      |
++-------+-------+--------------+
+|   101 | lab B | Acts Pune    |
+|   102 | lab C | Acts Pune    |
+|   103 | lab D | IACSD Pune   |
+|   104 | lab E | SunBeam Pune |
++-------+-------+--------------+
+4 rows in set (0.00 sec)
+
+mysql> insert into admin values
+    -> (1001, 'user1', 'user1', 11111, 'Ashwini'),
+    -> (1002, 'user2', 'user2', 2222, 'Rohit'),
+    -> (1003, 'user3', 'user3', 3333, 'Kedar'),
+    -> (1004, 'user4', 'user4', 44444, 'Deepak'),
+    -> (1005, 'user5', 'user5', 55555, 'Sangeeta');
+Query OK, 5 rows affected (0.07 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from admin;
++---------+-------+----------+--------+----------+
+| adminid | uname | password | mobile | name     |
++---------+-------+----------+--------+----------+
+|    1001 | user1 | user1    |  11111 | Ashwini  |
+|    1002 | user2 | user2    |   2222 | Rohit    |
+|    1003 | user3 | user3    |   3333 | Kedar    |
+|    1004 | user4 | user4    |  44444 | Deepak   |
+|    1005 | user5 | user5    |  55555 | Sangeeta |
++---------+-------+----------+--------+----------+
+5 rows in set (0.00 sec)
+
+
+mysql> insert into Server values
+    -> (3, 'omega3', 'I7 processor 32 GB', 101, 1002),
+    -> (4, 'omega4', 'I5 processor 16 GB', 101, 1002),
+    -> (5, 'test1', 'I4 processor 16 GB', 102, 1002),
+    ->  (6, 'test2', 'I3 processor 24 GB', 102, 1003),
+    -> (7, 'test3', 'I5 processor 8 GB', 101, 1003),
+    -> (8, 'Lotus1', 'I5 processor 16 GB', 103, 1003),
+    -> (9, 'oracle', 'I5 processor 256 GB', 103, 1002),
+    -> (10, 'omega5', 'I5 processor 256 GB', 103, 1001),
+    ->  (11, 'mysql2', 'I5 processor 256 GB', default, default),
+    -> (12, 'mysql3', 'I5 processor 256 GB', default, 1001),
+    -> (13, 'mysql4', 'I5 processor 256 GB', default, 1001);
+Query OK, 11 rows affected (0.07 sec)
+Records: 11  Duplicates: 0  Warnings: 0
+
+mysql> select * from Server;
++------+--------+---------------------+-------+---------+
+| sid  | sname  | configuration       | locid | adminid |
++------+--------+---------------------+-------+---------+
+|    3 | omega3 | I7 processor 32 GB  |   101 |    1002 |
+|    4 | omega4 | I5 processor 16 GB  |   101 |    1002 |
+|    5 | test1  | I4 processor 16 GB  |   102 |    1002 |
+|    6 | test2  | I3 processor 24 GB  |   102 |    1003 |
+|    7 | test3  | I5 processor 8 GB   |   101 |    1003 |
+|    8 | Lotus1 | I5 processor 16 GB  |   103 |    1003 |
+|    9 | oracle | I5 processor 256 GB |   103 |    1002 |
+|   10 | omega5 | I5 processor 256 GB |   103 |    1001 |
+|   11 | mysql2 | I5 processor 256 GB |  NULL |    NULL |
+|   12 | mysql3 | I5 processor 256 GB |  NULL |    1001 |
+|   13 | mysql4 | I5 processor 256 GB |  NULL |    1001 |
++------+--------+---------------------+-------+---------+
+11 rows in set (0.00 sec)

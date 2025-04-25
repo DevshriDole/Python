@@ -1,0 +1,100 @@
+courses = {}
+
+def add_course(courses):
+    course_name = input("Enter the course name: ").strip()
+    duration = int(input("Enter the duration (in hours): "))
+    capacity = int(input("Enter the capacity: "))
+    courses[course_name] = (duration, capacity)
+    print(f"Course '{course_name}' added successfully.")
+
+def capacity_greater(courses):
+    print("Courses with capacity greater than 150: ")
+    for course, (duration, capacity) in courses.items():
+        if capacity > 150:
+            print(f"Course: {course}, Duration: {duration} hours, Capacity: {capacity}")
+    
+def main():
+    while True:
+        print("\nMenu:")
+        print("1. Add new course")
+        print("2. Display all courses with capacity > 150")
+        print("3. Exit")
+        choice = input("Enter your choice (1-3): ")
+
+        if choice == '1':
+            add_course(courses)
+
+        elif choice == '2':
+            capacity_greater(courses)
+
+        elif choice == '3':
+            print("Exiting the program.")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+
+if __name__ == "__main__":
+
+    main()
+
+
+
+OUTPUT-->
+PS C:\Users\ditiss\Desktop\250240123012> & C:/Users/ditiss/AppData/Local/Programs/Python/Python313/python.exe c:/Users/ditiss/Desktop/250240123012/Q3.1.py
+
+Menu:
+1. Add new course
+2. Display all courses with capacity > 150
+3. Exit
+Enter your choice (1-3): 1
+Enter the course name: java
+Enter the duration (in hours): 90
+Enter the capacity: 200
+Course 'java' added successfully.
+
+Menu:
+1. Add new course
+2. Display all courses with capacity > 150
+3. Exit
+Enter your choice (1-3): 1
+Enter the course name: cpp
+Enter the duration (in hours): 95
+Enter the capacity: 100
+Course 'cpp' added successfully.
+
+Menu:
+1. Add new course
+2. Display all courses with capacity > 150
+3. Exit
+Enter your choice (1-3): 1
+Enter the course name: python
+Enter the duration (in hours): 95
+Enter the capacity: 300
+Course 'python' added successfully.
+
+Menu:
+1. Add new course
+2. Display all courses with capacity > 150
+3. Exit
+Enter your choice (1-3): 1
+Enter the course name: pki
+Enter the duration (in hours): 60
+Enter the capacity: 60
+Course 'pki' added successfully.
+
+Menu:
+1. Add new course
+2. Display all courses with capacity > 150
+3. Exit
+Enter your choice (1-3): 2
+Courses with capacity greater than 150: 
+Course: java, Duration: 90 hours, Capacity: 200
+Course: python, Duration: 95 hours, Capacity: 300
+
+Menu:
+1. Add new course
+1. Add new course
+2. Display all courses with capacity > 150
+3. Exit
+Enter your choice (1-3): 3
